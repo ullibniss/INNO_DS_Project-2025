@@ -1,0 +1,16 @@
+---
+- name: Create a user and set password
+  ansible.builtin.user:
+    name: "{{ provision_user }}"
+    password: "{{ provision_password | password_hash('sha512') }}"
+    state: present
+    shell: /bin/bash
+    create_home: yes
+    update_password: on_create
+
+- name: Ensure user is added to sudoers file
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    line: "{{ provision_user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: "visudo -cf %s"
+    state: present

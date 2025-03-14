@@ -53,9 +53,9 @@
       - docker-compose-plugin
   become: true
 
-- name: Add {{ default_user }} to docker group
+- name: Add {{ provision_user }} to docker group
   user:
-    name: "{{ default_user}}"
+    name: "{{ provision_user}}"
     groups: docker
     append: yes
   become: true
