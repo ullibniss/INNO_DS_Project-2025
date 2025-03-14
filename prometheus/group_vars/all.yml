@@ -1,2 +1,0 @@
-default_user: imzrb
-deploy_dir: "/home/{{ default_user }}/deployments"
