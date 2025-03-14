@@ -1,0 +1,8 @@
+datasources:
+{% for ds in grafana_datasources %}
+  - name: {{ ds.name }}
+    access: proxy
+    type: {{ ds.type }}
+    url: {{ ds.host }}
+    isDefault: true
+{% endfor %}

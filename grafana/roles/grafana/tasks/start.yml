@@ -1,0 +1,13 @@
+---
+- name: Start grafana
+  command:
+    argv:
+      - "docker"
+      - "compose"
+      - "-f"
+      - "{{ grafana_deploy_dir }}/docker-compose.yml"
+      - "up"
+      - "-d"
+      - "--no-build"
+      - "--force-recreate"
+  become: true

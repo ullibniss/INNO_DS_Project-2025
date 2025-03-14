@@ -1,0 +1,8 @@
+---
+- hosts: [grafana]
+  tasks:
+    - name: Deploy grafana service
+      ansible.builtin.import_role:
+        name: grafana
+      vars:
+        grafana_action: deploy

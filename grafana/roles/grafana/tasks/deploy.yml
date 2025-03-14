@@ -1,0 +1,53 @@
+---
+- name: Create directory for grafana
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  with_items:
+    - "{{ grafana_deploy_dir }}"
+    - "{{ grafana_dashboards_dir }}"
+    - "{{ grafana_datasources_dir }}"
+  become: true
+
+- name: Render dashboards.yml
+  template:
+    src: dashboards.yml
+    dest: "{{ grafana_deploy_dir }}/dashboards.yml"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true
+
+- name: Deploy dashboards
+  copy:
+    src: "{{ item }}"
+    dest: "{{ grafana_dashboards_dir }}"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  with_fileglob:
+    - "templates/dashboards/*"
+  become: true
+
+- name: Deploy datasources
+  template:
+    src: "{{ item }}"
+    dest: "{{ grafana_datasources_dir }}"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  with_fileglob:
+    - "templates/datasources/*"
+  become: true
+
+- name: Render docker-compose.yml
+  template:
+    src: docker-compose.yml
+    dest: "{{ grafana_deploy_dir }}/docker-compose.yml"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true
