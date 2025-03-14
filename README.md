@@ -4,9 +4,9 @@
 
 ---
 
-1) Ansible AWX was deployed manually
-2) Each role on it's own branch
-- prometheus
-- grafana
-- node_exporter
-- provision
+- Ansible AWX was deployed manually
+- Each role on it's own branch
+  - prometheus
+  - grafana
+  - node_exporter
+  - provision
