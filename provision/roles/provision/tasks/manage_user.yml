@@ -7,10 +7,12 @@
     shell: /bin/bash
     create_home: yes
     update_password: on_create
-
+  become: true
+  
 - name: Ensure user is added to sudoers file
   ansible.builtin.lineinfile:
     path: /etc/sudoers
     line: "{{ provision_user }} ALL=(ALL) NOPASSWD: ALL"
     validate: "visudo -cf %s"
     state: present
+  become: true
