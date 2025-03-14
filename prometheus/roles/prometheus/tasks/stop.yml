@@ -1,0 +1,10 @@
+---
+- name: Stop prometheus
+  command:
+    argv:
+      - "docker"
+      - "compose"
+      - "-f"
+      - "{{ prometheus_deploy_dir }}/docker-compose.yml"
+      - "down"
+  become: true

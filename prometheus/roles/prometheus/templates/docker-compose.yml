@@ -1,0 +1,13 @@
+version: "3.0"
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - "{{ prometheus_deploy_dir }}/prometheus.yml:/etc/prometheus/prometheus.yml"

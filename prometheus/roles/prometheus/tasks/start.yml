@@ -1,0 +1,13 @@
+---
+- name: Start prometheus
+  command:
+    argv:
+      - "docker"
+      - "compose"
+      - "-f"
+      - "{{ prometheus_deploy_dir }}/docker-compose.yml"
+      - "up"
+      - "-d"
+      - "--no-build"
+      - "--force-recreate"
+  become: true

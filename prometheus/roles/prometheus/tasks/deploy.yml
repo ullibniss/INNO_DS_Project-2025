@@ -1,0 +1,27 @@
+---
+- name: Create directory for prometheus
+  file:
+    path: "{{ prometheus_deploy_dir }}"
+    state: directory
+    mode: 0755
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true
+
+- name: Render prometheus.yml
+  template:
+    src: prometheus.yml
+    dest: "{{ prometheus_deploy_dir }}/prometheus.yml"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true
+
+- name: Render docker-compose.yml
+  template:
+    src: docker-compose.yml
+    dest: "{{ prometheus_deploy_dir }}/docker-compose.yml"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true
