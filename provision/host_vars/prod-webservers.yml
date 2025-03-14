@@ -1,0 +1,9 @@
+provision_hosts:
+  - hostname: prod-webservers-01
+    ip: 192.168.0.15
+  - hostname: prod-database-01
+    ip: 192.168.0.16
+  - hostname: prod-prometheus-01
+    ip: 192.168.0.17
+  - hostname: prod-nat-01
+    ip: 192.168.0.9

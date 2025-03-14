@@ -1,0 +1,15 @@
+default_user: imzrb
+
+provision_ssh_dir: "/home/{{ default_user }}/.ssh"
+
+provision_hosts:
+  - hostname: test-webservers-01
+    ip: 192.168.0.15
+  - hostname: test-database-01
+    ip: 192.168.0.16
+  - hostname: test-prometheus-01
+    ip: 192.168.0.17
+  - hostname: dev-services-01
+    ip: 192.168.0.8
+  - hostname: test-nat-01
+    ip: 192.168.0.9
