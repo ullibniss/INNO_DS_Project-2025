@@ -1,0 +1,13 @@
+---
+- name: Start node_exporter
+  command:
+    argv:
+      - "docker"
+      - "compose"
+      - "-f"
+      - "{{ node_exporter_deploy_dir }}/docker-compose.yml"
+      - "up"
+      - "-d"
+      - "--no-build"
+      - "--force-recreate"
+  become: true

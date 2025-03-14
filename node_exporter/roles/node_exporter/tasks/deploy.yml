@@ -1,0 +1,27 @@
+---
+- name: Create directory for node_exporter
+  file:
+    path: "{{ node_exporter_deploy_dir }}"
+    state: directory
+    mode: 0755
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true
+
+#- name: Render config.yml
+#  template:
+#    src: config.yml
+#    dest: "{{ backend_deploy_dir }}/config.yml"
+#    mode: 0644
+#    owner: "{{ default_user }}"
+#    group: "{{ default_user }}"
+#  become: true
+
+- name: Render docker-compose.yml
+  template:
+    src: docker-compose.yml
+    dest: "{{ node_exporter_deploy_dir }}/docker-compose.yml"
+    mode: 0644
+    owner: "{{ default_user }}"
+    group: "{{ default_user }}"
+  become: true

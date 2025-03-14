@@ -1,0 +1,8 @@
+---
+- hosts: [node_exporter]
+  tasks:
+    - name: Deploy node_exporter service
+      ansible.builtin.import_role:
+        name: node_exporter
+      vars:
+        node_exporter_action: deploy
