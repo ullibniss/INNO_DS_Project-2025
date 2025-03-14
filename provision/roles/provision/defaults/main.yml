@@ -1,6 +1,6 @@
 default_user: fedorov
 
-provision_ssh_dir: "/home/{{ default_user }}/.ssh"
+provision_ssh_dir: "/home/{{ provision_user }}/.ssh"
 provision_user: fedorov_ae
 provision_password: secure_PaSS
 
